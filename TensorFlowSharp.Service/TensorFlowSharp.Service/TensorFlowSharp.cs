@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using TensorFlow;
@@ -11,12 +12,13 @@ namespace TensorFlowSharp.Service
     {
         public ReadOnlyCollection<Prediction> Run()
         {
-            string basePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\"));
+            string libsBath = ConfigurationManager.AppSettings["LibsPath"];
+            string setsPath = ConfigurationManager.AppSettings["SetsPath"];
 
-            string image = $@"{basePath}\Data\sample_flower.jpg";
+            string image = $@"{setsPath}\sample_flower.jpg";
 
-            byte[] model = File.ReadAllBytes($@"{basePath}\Data\output_graph.pb");
-            string[] labels = File.ReadAllLines($@"{basePath}\Data\output_labels.txt");
+            byte[] model = File.ReadAllBytes($@"{setsPath}\output_graph.pb");
+            string[] labels = File.ReadAllLines($@"{setsPath}\output_labels.txt");
 
             using (var graph = new TFGraph())
             {

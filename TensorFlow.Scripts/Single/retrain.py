@@ -1140,14 +1140,18 @@ def main(_):
       f.write('\n'.join(image_lists.keys()) + '\n')
 
 
-def getTempFolder():
+def getCurrentFolder():
     return os.path.dirname(os.path.abspath(__file__))
+
+def getBaseFolder():
+    return os.path.join(getCurrentFolder(), os.path.abspath('../../Sets/Single'))
 
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
 
-  modelDir = os.path.join(getTempFolder(), os.path.abspath('../../Temp/flower_photos'))
+  baseDir = getBaseFolder()
+  modelDir = os.path.join(getBaseFolder(), 'flower_photos')
   
   parser.add_argument(
       '--image_dir',
@@ -1158,13 +1162,13 @@ if __name__ == '__main__':
   parser.add_argument(
       '--output_graph',
       type=str,
-      default='/tmp/output_graph.pb',
+      default='{0}/output_graph.pb'.format(getBaseFolder()),
       help='Where to save the trained graph.'
   )
   parser.add_argument(
       '--intermediate_output_graphs_dir',
       type=str,
-      default='/tmp/intermediate_graph/',
+      default='{0}/intermediate_graph/'.format(getBaseFolder()),
       help='Where to save the intermediate graphs.'
   )
   parser.add_argument(
@@ -1179,13 +1183,13 @@ if __name__ == '__main__':
   parser.add_argument(
       '--output_labels',
       type=str,
-      default='/tmp/output_labels.txt',
+      default='{0}/output_labels.txt'.format(getBaseFolder()),
       help='Where to save the trained graph\'s labels.'
   )
   parser.add_argument(
       '--summaries_dir',
       type=str,
-      default='/tmp/retrain_logs',
+      default='{0}/retrain_logs'.format(getBaseFolder()),
       help='Where to save summary logs for TensorBoard.'
   )
   parser.add_argument(
@@ -1259,7 +1263,7 @@ if __name__ == '__main__':
   parser.add_argument(
       '--model_dir',
       type=str,
-      default='/tmp/imagenet',
+      default='{0}/imagenet'.format(getBaseFolder()),
       help="""\
       Path to classify_image_graph_def.pb,
       imagenet_synset_to_human_label_map.txt, and
@@ -1269,7 +1273,7 @@ if __name__ == '__main__':
   parser.add_argument(
       '--bottleneck_dir',
       type=str,
-      default='/tmp/bottleneck',
+      default='{0}/bottleneck'.format(getBaseFolder()),
       help='Path to cache bottleneck layer values as files.'
   )
   parser.add_argument(

@@ -3,3 +3,7 @@
 ################################################################################
 
 /Sets
+/TensorFlowSharp.Service/.vs
+/TensorFlowSharp.Service/packages
+/TensorFlowSharp.Service/TensorFlowSharp.Service/bin
+/TensorFlowSharp.Service/TensorFlowSharp.Service/obj

@@ -1,17 +1,17 @@
 import tensorflow as tf, sys
 import os.path
 
-def getTempFolder():
+def getCurrentFolder():
     return os.path.dirname(os.path.abspath(__file__))
 
 def getBaseFolder():
-    return os.path.join(getTempFolder(), os.path.abspath('../../Temp'))
+    return os.path.join(getCurrentFolder(), os.path.abspath('../../Sets/Single'))
 
 if __name__ == '__main__':
 
     image_path =  '{0}\sample_flower.jpg'.format(getBaseFolder())
-    graph_path = 'C:\\tmp\output_graph.pb'
-    labels_path = 'C:\\tmp\output_labels.txt'
+    graph_path = '{0}\output_graph.pb'.format(getBaseFolder())
+    labels_path = '{0}\output_labels.txt'.format(getBaseFolder())
     
     # Read in the image_data
     image_data = tf.gfile.FastGFile(image_path, 'rb').read()
