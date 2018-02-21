@@ -1,7 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
 
-/Temp
-/TensorFlowSharp.Service/.vs
-/TensorFlowSharp.Service/Data
-/TensorFlowSharp.Service/packages
-/TensorFlowSharp.Service/TensorFlowSharp.Service/bin
-/TensorFlowSharp.Service/TensorFlowSharp.Service/obj
+/Sets
